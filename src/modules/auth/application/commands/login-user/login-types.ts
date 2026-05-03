@@ -1,0 +1,8 @@
+export interface LoginUserResult {
+  accessToken: string;
+  user: {
+    id: string;
+    email: string;
+    createdAt: Date;
+  };
+}

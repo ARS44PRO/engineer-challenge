@@ -1,0 +1,43 @@
+{
+  "name": "engineer-challenge",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "dev": "ts-node src/main.ts",
+    "build": "tsc",
+    "start": "node dist/main.js",
+    "migrate": "NODE_OPTIONS='--require ts-node/register' knex migrate:latest",
+    "migrate:rollback": "knex migrate:rollback",
+    "migrate:make": "NODE_OPTIONS='--require ts-node/register' knex migrate:make"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "awilix": "^13.0.3",
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.4.2",
+    "email-validator": "^2.0.4",
+    "fastify": "^5.8.5",
+    "jsonwebtoken": "^9.0.3",
+    "knex": "^3.2.9",
+    "mercurius": "^16.9.0",
+    "pg": "^8.20.0",
+    "pino": "^10.3.1"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/jest": "^30.0.0",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^25.6.0",
+    "@types/ws": "^8.18.1",
+    "jest": "^29.7.0",
+    "knex-types": "^0.5.0",
+    "ts-jest": "^29.4.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.3"
+  }
+}

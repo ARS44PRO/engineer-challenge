@@ -1,0 +1,31 @@
+services:
+  postgres_atls:
+    image: postgres:16-alpine
+    container_name: postgres_atls
+    env_file:
+      - .env
+    ports:
+      - "${POSTGRES_PORT}:${POSTGRES_PORT}"
+    volumes:
+      - pgdata_atls:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}" ]
+      interval: 2s
+      timeout: 2s
+      retries: 10
+
+  app:
+    build: .
+    container_name: app_atls
+    env_file:
+      - .env
+    environment:
+      DB_HOST: postgres_atls
+    ports:
+      - "3000:3000"
+    depends_on:
+      postgres_atls:
+        condition: service_healthy
+
+volumes:
+  pgdata_atls:
